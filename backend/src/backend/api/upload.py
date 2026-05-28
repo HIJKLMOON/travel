@@ -1,9 +1,11 @@
+import os
+
 from fastapi import APIRouter, File, HTTPException, UploadFile
 
-from app.config import settings
-from app.models.schemas import UploadResponse
-from app.rag.loader import load_document, save_upload, split_items
-from app.rag.vector_store import add_documents, get_chunk_count
+from backend.config import settings
+from backend.models.schemas import UploadResponse
+from backend.rag.loader import load_document, save_upload, split_items
+from backend.rag.vector_store import add_documents, get_chunk_count
 
 router = APIRouter()
 
@@ -27,6 +29,9 @@ async def upload_document(file: UploadFile = File(...)):
         chunks, metadatas = split_items(items)
         add_documents(doc_id, chunks, metadatas)
     except Exception as e:
+        # 索引构建失败时清理已保存的文件，避免产生"死文档"
+        if os.path.exists(file_path):
+            os.remove(file_path)
         raise HTTPException(
             status_code=500, detail=f"Failed to process document: {str(e)}"
         )

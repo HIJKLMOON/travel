@@ -3,9 +3,9 @@ import json
 from fastapi import APIRouter, HTTPException
 from sse_starlette.sse import EventSourceResponse
 
-from app.agent.graph import run_agent
-from app.agent.stream import stream_chat
-from app.models.schemas import ChatRequest, ChatResponse, SourceItem
+from backend.agent.graph import run_agent
+from backend.agent.stream import stream_chat
+from backend.models.schemas import ChatRequest, ChatResponse, SourceItem
 
 router = APIRouter()
 

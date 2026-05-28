@@ -4,9 +4,13 @@ from datetime import datetime
 
 from fastapi import APIRouter, HTTPException
 
-from app.config import settings
-from app.models.schemas import DeleteResponse, DocumentInfo
-from app.rag.vector_store import delete_collection, get_chunk_count, list_collections
+from backend.config import settings
+from backend.models.schemas import DeleteResponse, DocumentInfo
+from backend.rag.vector_store import (
+    delete_collection,
+    get_chunk_count,
+    list_collections,
+)
 
 router = APIRouter()
 

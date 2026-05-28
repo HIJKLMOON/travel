@@ -85,7 +85,7 @@ cp backend/.env backend/.env.local
 ```bash
 cd backend
 uv sync                  # 安装依赖
-uv run uvicorn app.main:app --reload --port 8000
+uv run uvicorn backend.main:app --reload --port 8000
 ```
 
 后端启动在 `http://localhost:8000`，API 文档在 `http://localhost:8000/docs`。

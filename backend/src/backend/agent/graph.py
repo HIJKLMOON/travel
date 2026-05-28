@@ -7,8 +7,8 @@ from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, START, MessagesState, StateGraph
 from pydantic import SecretStr
 
-from app.config import settings
-from app.rag.vector_store import query_multi_documents
+from backend.config import settings
+from backend.rag.vector_store import query_multi_documents
 
 _llm = ChatOpenAI(
     model=settings.LLM_MODEL,

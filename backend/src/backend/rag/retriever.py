@@ -1,4 +1,4 @@
-from app.rag.vector_store import query_documents
+from backend.rag.vector_store import query_documents
 
 
 def retrieve(document_id: str, query: str, k: int = 4) -> list[dict]:
